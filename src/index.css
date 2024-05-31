@@ -1,0 +1,27 @@
+:root{
+  color: white;
+  font-family: 'Threat Regular';
+  user-select: none;
+}
+
+@font-face {
+  font-family: 'Threat Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./Fonts/Threat-2OAeX.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'AirStrike';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./Fonts/airstrike.ttf') format('woff');
+    }
+
+body{
+  font-family: 'AirStrike';
+  position: relative;
+  text-align: center;
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
