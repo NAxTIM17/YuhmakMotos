@@ -6,14 +6,11 @@ import {
   PerspectiveCamera,
   OrbitControls,
   View,
-  Fisheye,
 } from "@react-three/drei";
 import { useEffect } from "react";
-import { ReactLenis, useLenis } from 'lenis/react'
-import Lenis from "lenis";
+import ModelWrapper from "./components/modelWrapper";
 
 export default function App() {
-
   const KawasakiNinjaH2 = () => {
     const { scene } = useLoader(
       GLTFLoader,
@@ -35,7 +32,7 @@ export default function App() {
         <primitive object={scene} scale={2} position={[0, -1.5, 0]} />
       </>
     );
-  } 
+  };
   const SetUp = () => {
     return (
       <>
@@ -56,8 +53,6 @@ export default function App() {
     );
   };
 
-  // const lenis = new Lenis({syncTouch: true})
-  // addEffect((t) => lenis.raf(t))
 
   useEffect(() => {
     console.log(document.getElementById("moto"));
@@ -70,28 +65,18 @@ export default function App() {
         <div className="header__line"></div>
       </div>
       <div className="moto__body" id="moto">
-        <div className="moto__container">
-          <h1 className="moto__container--title">Ninja H2</h1>
-          <div className="three__canvas">
-            <View className="view__bike">
-                <SetUp/>
-                <KawasakiNinjaH2/>
-            </View>
-          </div>
-           <div className="moto__info"></div>
-          <div className="info__container"></div>
-        </div>
-        <div className="moto__container">
-          <h1 className="moto__container--title">Z 1000</h1>
-          <div className="three__canvas">
-            <View className="view__bike">
-              <SetUp/>
-              <KawasakiZ1000/>
-            </View>
-          </div>
-          {/* <div className="moto__info"></div>
-          <div className="info__container"></div> */}
-        </div>
+        <ModelWrapper bikeName={'Ninja H2'} orientation={'left'} >
+          <View className="view__bike">
+            <SetUp />
+            <KawasakiNinjaH2 />
+          </View>
+        </ModelWrapper>
+        <ModelWrapper bikeName={'Z1000'} orientation={'right'}>
+          <View className="view__bike">
+            <SetUp />
+            <KawasakiZ1000 />
+          </View>
+        </ModelWrapper>
         <Canvas
           className="motos__canvas"
           eventSource={document.getElementById("moto")}
